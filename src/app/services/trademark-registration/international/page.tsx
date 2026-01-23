@@ -3,6 +3,12 @@ import Link from "next/link";
 
 import { TectonicSlab } from "@/components/tectonic/TectonicSlab";
 import { Pillar } from "@/components/tectonic/Pillar";
+import {
+  generateProfessionalServiceLD,
+  generateFAQPageLD,
+  generateBreadcrumbLD,
+  renderJSONLD,
+} from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Міжнародна реєстрація торгової марки",
@@ -415,6 +421,22 @@ export default function TrademarkInternationalPage() {
           </div>
         </TectonicSlab>
       </section>
+
+      {/* Structured Data */}
+      {renderJSONLD([
+        generateBreadcrumbLD([
+          { name: "Головна", url: "/" },
+          { name: "Послуги", url: "/services" },
+          { name: "Міжнародна реєстрація", url: "/services/trademark-registration/international" },
+        ]),
+        generateProfessionalServiceLD({
+          name: "Міжнародна реєстрація торгової марки",
+          description: "Захистіть свій бренд у 130+ країнах світу через Мадридську систему WIPO. Одна заявка, централізоване управління.",
+          serviceType: "International Trademark Registration",
+          priceRange: "€1,200+",
+        }),
+        generateFAQPageLD(faq),
+      ])}
     </main>
   );
 }

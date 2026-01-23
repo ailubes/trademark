@@ -3,6 +3,12 @@ import Link from "next/link";
 
 import { TectonicSlab } from "@/components/tectonic/TectonicSlab";
 import { Pillar } from "@/components/tectonic/Pillar";
+import {
+  generateProfessionalServiceLD,
+  generateFAQPageLD,
+  generateBreadcrumbLD,
+  renderJSONLD,
+} from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Реєстрація торгової марки в ЄС",
@@ -365,6 +371,22 @@ export default function TrademarkEUPage() {
           </div>
         </TectonicSlab>
       </section>
+
+      {/* Structured Data */}
+      {renderJSONLD([
+        generateBreadcrumbLD([
+          { name: "Головна", url: "/" },
+          { name: "Послуги", url: "/services" },
+          { name: "Реєстрація ТМ в ЄС", url: "/services/trademark-registration/eu" },
+        ]),
+        generateProfessionalServiceLD({
+          name: "Реєстрація торгової марки в Європейському Союзі",
+          description: "Захистіть свій бренд у всіх 27 країнах ЄС однією заявкою через EUIPO.",
+          serviceType: "Trademark Registration",
+          priceRange: "€850 - €1,650",
+        }),
+        generateFAQPageLD(faq),
+      ])}
     </main>
   );
 }

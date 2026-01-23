@@ -5,6 +5,12 @@ import { Pillar } from "@/components/tectonic/Pillar";
 import { SearchInputGroup } from "@/components/tectonic/SearchInputGroup";
 import { StatusBadge } from "@/components/tectonic/StatusBadge";
 import { TectonicSlab } from "@/components/tectonic/TectonicSlab";
+import {
+  generateOrganizationLD,
+  generateWebSiteLD,
+  generateProfessionalServiceLD,
+  renderJSONLD,
+} from "@/lib/structured-data";
 
 const registryCards = [
   {
@@ -333,6 +339,18 @@ export default function Home() {
           </Link>
         </TectonicSlab>
       </section>
+
+      {/* Structured Data */}
+      {renderJSONLD([
+        generateOrganizationLD(),
+        generateWebSiteLD(),
+        generateProfessionalServiceLD({
+          name: "Реєстрація торгових марок в Україні",
+          description: "Професійна реєстрація торгових марок через УКРПАТЕНТ. Повний супровід від перевірки до отримання свідоцтва.",
+          serviceType: "Trademark Registration",
+          priceRange: "₴₴",
+        }),
+      ])}
     </main>
   );
 }

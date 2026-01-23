@@ -3,6 +3,12 @@ import Link from "next/link";
 
 import { TectonicSlab } from "@/components/tectonic/TectonicSlab";
 import { Pillar } from "@/components/tectonic/Pillar";
+import {
+  generateProfessionalServiceLD,
+  generateFAQPageLD,
+  generateBreadcrumbLD,
+  renderJSONLD,
+} from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Реєстрація торгової марки в Україні",
@@ -312,6 +318,22 @@ export default function TrademarkUkrainePage() {
           </div>
         </TectonicSlab>
       </section>
+
+      {/* Structured Data */}
+      {renderJSONLD([
+        generateBreadcrumbLD([
+          { name: "Головна", url: "/" },
+          { name: "Послуги", url: "/services" },
+          { name: "Реєстрація ТМ в Україні", url: "/services/trademark-registration/ukraine" },
+        ]),
+        generateProfessionalServiceLD({
+          name: "Реєстрація торгової марки в Україні",
+          description: "Професійний супровід реєстрації торгової марки через УКРПАТЕНТ. Від перевірки доступності до отримання свідоцтва.",
+          serviceType: "Trademark Registration",
+          priceRange: "₴6,500 - ₴58,200",
+        }),
+        generateFAQPageLD(faq),
+      ])}
     </main>
   );
 }

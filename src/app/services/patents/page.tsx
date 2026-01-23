@@ -3,6 +3,12 @@ import Link from "next/link";
 
 import { TectonicSlab } from "@/components/tectonic/TectonicSlab";
 import { Pillar } from "@/components/tectonic/Pillar";
+import {
+  generateProfessionalServiceLD,
+  generateFAQPageLD,
+  generateBreadcrumbLD,
+  renderJSONLD,
+} from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Патентування винаходів в Україні",
@@ -339,6 +345,22 @@ export default function PatentsPage() {
           </div>
         </TectonicSlab>
       </section>
+
+      {/* Structured Data */}
+      {renderJSONLD([
+        generateBreadcrumbLD([
+          { name: "Головна", url: "/" },
+          { name: "Послуги", url: "/services" },
+          { name: "Патенти", url: "/services/patents" },
+        ]),
+        generateProfessionalServiceLD({
+          name: "Патентування винаходів в Україні",
+          description: "Професійний супровід патентування винаходів, корисних моделей та промислових зразків через УКРПАТЕНТ.",
+          serviceType: "Patent Registration",
+          priceRange: "₴6,000 - ₴12,000",
+        }),
+        generateFAQPageLD(faq),
+      ])}
     </main>
   );
 }

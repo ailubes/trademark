@@ -3,6 +3,12 @@ import Link from "next/link";
 
 import { TectonicSlab } from "@/components/tectonic/TectonicSlab";
 import { Pillar } from "@/components/tectonic/Pillar";
+import {
+  generateProfessionalServiceLD,
+  generateFAQPageLD,
+  generateBreadcrumbLD,
+  renderJSONLD,
+} from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Реєстрація авторського права в Україні",
@@ -425,6 +431,22 @@ export default function CopyrightPage() {
           </div>
         </TectonicSlab>
       </section>
+
+      {/* Structured Data */}
+      {renderJSONLD([
+        generateBreadcrumbLD([
+          { name: "Головна", url: "/" },
+          { name: "Послуги", url: "/services" },
+          { name: "Авторське право", url: "/services/copyright" },
+        ]),
+        generateProfessionalServiceLD({
+          name: "Реєстрація авторського права в Україні",
+          description: "Офіційна реєстрація авторських прав на літературні, музичні, аудіовізуальні твори, програмне забезпечення.",
+          serviceType: "Copyright Registration",
+          priceRange: "₴3,000 - ₴15,000",
+        }),
+        generateFAQPageLD(faq),
+      ])}
     </main>
   );
 }
