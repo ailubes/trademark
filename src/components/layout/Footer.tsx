@@ -27,7 +27,7 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4 md:col-span-2 lg:col-span-1">
             <div className="serif text-3xl uppercase tracking-tight">
-              Trademark<span className="text-tectonic-accent">.ua</span>
+              Trademark<span className="text-tectonic-accent">.com.ua</span>
             </div>
             <p className="max-w-sm text-sm leading-relaxed text-white/70">
               Професійна реєстрація торгових марок, патентів та авторських прав в Україні, ЄС та за Мадридською системою.

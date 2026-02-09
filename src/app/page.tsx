@@ -19,7 +19,7 @@ const registryCards = [
     statusClass: "text-emerald-600",
     title: "Національний реєстр України",
     description:
-      "Повна синхронізація з базою УКРПАТЕНТ. Охоплює всі діючі свідоцтва та заявки на території України.",
+      "Повна синхронізація з базою УКРНОІВІ. Охоплює всі діючі свідоцтва та заявки на території України.",
     metric: "₴6 500",
     metricSuffix: "/клас",
   },
@@ -65,8 +65,8 @@ const processSteps = [
 ];
 
 const trustIndicators = [
-  { value: "15+", label: "років досвіду" },
-  { value: "2 500+", label: "зареєстрованих марок" },
+  { value: "25+", label: "років досвіду" },
+  { value: "4 300+", label: "зареєстрованих марок" },
   { value: "98%", label: "успішних реєстрацій" },
 ];
 
@@ -81,7 +81,7 @@ export default function Home() {
             <span className="text-tectonic-accent italic"> впевнено.</span>
           </h1>
           <p className="pillar reveal reveal-delay-1 mt-8 max-w-xl text-lg leading-relaxed text-tectonic-stone-600">
-            Професійна реєстрація торгових марок через інтеграцію з TMview, WIPO та УКРПАТЕНТ.
+            Професійна реєстрація торгових марок через інтеграцію з TMview, WIPO та УКРНОІВІ.
             Отримайте чітку оцінку ризиків та юридичний супровід.
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function Home() {
         <div className="mono mt-6 flex flex-wrap gap-6 text-[10px] uppercase tracking-[0.35em] text-tectonic-stone-500">
           <span>ОНЛАЙН ПЕРЕВІРКА</span>
           <span>136M+ ЗАПИСІВ</span>
-          <span>УКРПАТЕНТ 2025</span>
+          <span>УКРНОІВІ 2025</span>
         </div>
       </section>
 
@@ -325,7 +325,7 @@ export default function Home() {
         >
           <div className="max-w-xl">
             <h3 className="text-3xl font-semibold text-white sm:text-4xl">
-              15+ років практики, 2 500+ зареєстрованих марок
+              25+ років практики, 4 300+ зареєстрованих марок
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-white/70">
               Від стартапів до великих компаній — супроводжуємо бренди на кожному етапі захисту інтелектуальної власності.
@@ -346,7 +346,7 @@ export default function Home() {
         generateWebSiteLD(),
         generateProfessionalServiceLD({
           name: "Реєстрація торгових марок в Україні",
-          description: "Професійна реєстрація торгових марок через УКРПАТЕНТ. Повний супровід від перевірки до отримання свідоцтва.",
+          description: "Професійна реєстрація торгових марок через УКРНОІВІ. Повний супровід від перевірки до отримання свідоцтва.",
           serviceType: "Trademark Registration",
           priceRange: "₴₴",
         }),

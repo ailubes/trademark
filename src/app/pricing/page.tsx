@@ -27,40 +27,6 @@ const trademarkPricing = [
     ],
     note: "Державне мито включено",
   },
-  {
-    title: "Прискорена",
-    subtitle: "Реєстрація в Україні",
-    price: "43 400",
-    currency: "₴",
-    period: "за 1 клас МКТУ",
-    duration: "8 місяців",
-    popular: true,
-    features: [
-      "Все зі Стандарт",
-      "Прискорена експертиза",
-      "Пріоритетна обробка",
-      "Оперативний зв'язок",
-      "Моніторинг статусу 24/7",
-    ],
-    note: "Державне мито включено",
-  },
-  {
-    title: "Експрес",
-    subtitle: "Реєстрація в Україні",
-    price: "58 200",
-    currency: "₴",
-    period: "за 1 клас МКТУ",
-    duration: "4 місяці",
-    popular: false,
-    features: [
-      "Все з Прискорена",
-      "Найшвидша реєстрація",
-      "Персональний менеджер",
-      "Щоденні оновлення",
-      "Гарантія термінів",
-    ],
-    note: "Державне мито включено",
-  },
 ];
 
 const internationalPricing = [
@@ -80,7 +46,7 @@ const internationalPricing = [
     price: "від €1 200",
     description: "Міжнародна реєстрація у 130+ країнах",
     features: [
-      "Базова заявка через УКРПАТЕНТ",
+      "Базова заявка через УКРНОІВІ",
       "Вибір країн призначення",
       "Супровід у WIPO",
       "Моніторинг статусу",
@@ -117,11 +83,11 @@ export default function PricingPage() {
             Реєстрація в Україні
           </h2>
           <span className="mono text-xs uppercase tracking-wider text-tectonic-stone-500">
-            УКРПАТЕНТ
+            УКРНОІВІ
           </span>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-1">
           {trademarkPricing.map((plan) => (
             <TectonicSlab
               key={plan.title}

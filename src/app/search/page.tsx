@@ -8,11 +8,19 @@ export const metadata: Metadata = {
   title: "Пошук торгової марки",
   description:
     "Перевірте доступність вашої торгової марки в базах України, ЄС та WIPO. Миттєвий онлайн пошук по 136+ мільйонам записів.",
+  robots: {
+    index: false,
+    follow: true,
+    googleBot: {
+      index: false,
+      follow: true,
+    },
+  },
 };
 
 const searchSources = [
   {
-    name: "УКРПАТЕНТ",
+    name: "УКРНОІВІ",
     description: "Національний реєстр України",
     records: "200 000+",
     status: "active",

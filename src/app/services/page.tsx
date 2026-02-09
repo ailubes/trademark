@@ -3,21 +3,25 @@ import Link from "next/link";
 
 import { TectonicSlab } from "@/components/tectonic/TectonicSlab";
 import { Pillar } from "@/components/tectonic/Pillar";
+import { generateBreadcrumbLD, renderJSONLD } from "@/lib/structured-data";
+
+const servicesPageDescription =
+  "Повний спектр послуг з реєстрації та захисту торгових марок, патентів і авторських прав, а також супровід бізнес-реєстрацій та дозвільних документів в Україні та за кордоном.";
 
 export const metadata: Metadata = {
   title: "Послуги з реєстрації інтелектуальної власності",
-  description:
-    "Повний спектр послуг з реєстрації та захисту торгових марок, патентів та авторських прав в Україні та за кордоном.",
+  description: servicesPageDescription,
 };
 
 const services = [
   {
     category: "Торгові марки",
-    description: "Реєстрація та захист вашого бренду в Україні, ЄС та міжнародно",
+    description:
+      "Реєстрація та захист вашого бренду в Україні, Європейському Союзі та міжнародна реєстрація за Мадридською угодою",
     items: [
       {
         title: "Реєстрація в Україні",
-        description: "Повний супровід реєстрації торгової марки через УКРПАТЕНТ",
+        description: "Повний супровід реєстрації торгової марки через УКРНОІВІ",
         price: "від ₴6 500",
         href: "/services/trademark-registration/ukraine",
         features: ["12 місяців до реєстрації", "Державне мито включено", "Перевірка доступності"],
@@ -40,7 +44,7 @@ const services = [
   },
   {
     category: "Патенти",
-    description: "Захист винаходів, корисних моделей та промислових зразків",
+    description: "Патенти на винаходи й корисні моделі та свідоцтва на промислові зразки",
     items: [
       {
         title: "Патент на винахід",
@@ -57,8 +61,8 @@ const services = [
         features: ["Прискорена процедура", "Термін до 10 років", "Без експертизи по суті"],
       },
       {
-        title: "Промисловий зразок",
-        description: "Захист зовнішнього вигляду виробів",
+        title: "Свідоцтво на промисловий зразок",
+        description: "Оформлення свідоцтва для захисту зовнішнього вигляду виробів",
         price: "від ₴6 000",
         href: "/services/patents",
         features: ["Дизайн продукції", "Упаковка", "Інтерфейси"],
@@ -76,9 +80,45 @@ const services = [
         href: "/services/copyright",
         features: ["Літературні твори", "Музичні твори", "Комп'ютерні програми"],
       },
+      {
+        title: "Реєстрація договору про передачу авторських прав",
+        description: "Офіційна реєстрація договору для підтвердження переходу прав",
+        price: "за запитом",
+        href: "/services/copyright",
+        features: ["Підготовка договору", "Реєстрація у держоргані", "Юридичний супровід"],
+      },
+    ],
+  },
+  {
+    category: "Бізнес та дозволи",
+    description: "Реєстрація бізнесу та дозвільні документи для законної діяльності",
+    items: [
+      {
+        title: "Реєстрація ТОВ, ФОП, ГО або благодійної організації",
+        description: "Підготовка документів та супровід державної реєстрації бізнесу.",
+        price: "за запитом",
+        href: "/contact",
+        features: ["Підбір КВЕД", "Статут і рішення", "Подача до держреєстратора"],
+      },
+      {
+        title: "Інші дозволи/ліцензії/сертифікати",
+        description:
+          "Надаємо комплексний правовий супровід з отримання всіх дозвільних, ліцензійних і сертифікаційних документів, необхідних для законної діяльності бізнесу.",
+        price: "за запитом",
+        href: "/contact",
+        features: ["Ліцензійні умови", "Дозвільні документи", "Сертифікація продукції"],
+      },
     ],
   },
 ];
+
+const serviceListItems = services.flatMap((category) =>
+  category.items.map((item) => ({
+    name: item.title,
+    description: item.description,
+    url: item.href,
+  })),
+);
 
 export default function ServicesPage() {
   return (
@@ -89,8 +129,8 @@ export default function ServicesPage() {
           Наші послуги
         </h1>
         <p className="mt-4 text-lg text-tectonic-stone-600">
-          Повний спектр послуг з реєстрації та захисту інтелектуальної власності.
-          Від перевірки доступності до отримання охоронного документа.
+          Повний спектр послуг з реєстрації та захисту інтелектуальної власності, а також супровід
+          бізнес-реєстрацій і дозвільних документів. Від перевірки доступності до отримання охоронного документа.
         </p>
       </div>
 
@@ -162,6 +202,35 @@ export default function ServicesPage() {
           </div>
         </TectonicSlab>
       </section>
+
+      {/* Structured Data */}
+      {renderJSONLD([
+        generateBreadcrumbLD([
+          { name: "Головна", url: "/" },
+          { name: "Послуги", url: "/services" },
+        ]),
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Послуги",
+          description: servicesPageDescription,
+          url: "https://trademark.com.ua/services",
+          mainEntity: {
+            "@type": "ItemList",
+            itemListElement: serviceListItems.map((item, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: item.name,
+              item: {
+                "@type": "Service",
+                name: item.name,
+                description: item.description,
+                url: `https://trademark.com.ua${item.url}`,
+              },
+            })),
+          },
+        },
+      ])}
     </main>
   );
 }

@@ -3,6 +3,7 @@ import { Playfair_Display, Source_Sans_3, JetBrains_Mono } from "next/font/googl
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { generateOrganizationLD, generateWebSiteLD, renderJSONLD } from "@/lib/structured-data";
 
 // Tectonic Design System Fonts with Cyrillic Support
 const playfair = Playfair_Display({
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     template: "%s | TRADEMARK.COM.UA",
   },
   description:
-    "Професійна реєстрація торгових марок, патентів та авторських прав в Україні. Перевірка доступності марки онлайн. 15+ років досвіду, 2500+ зареєстрованих марок.",
+    "Професійна реєстрація торгових марок, патентів та авторських прав в Україні. Перевірка доступності марки онлайн. 25+ років досвіду, 2500+ зареєстрованих марок.",
   keywords: [
     "реєстрація торгової марки",
     "торгова марка Україна",
@@ -106,6 +107,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#0D1B2A" />
+        {renderJSONLD([generateOrganizationLD(), generateWebSiteLD()])}
       </head>
       <body
         className={`${playfair.variable} ${sourceSans.variable} ${jetbrainsMono.variable} antialiased`}
