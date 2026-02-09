@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import ErrorMascot from '@/components/layout/ErrorMascot';
+import { ErrorMascot } from '@/components/layout/ErrorMascot';
 
 export default function Error({
   error,
