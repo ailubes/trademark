@@ -58,6 +58,7 @@ const processSteps = [
 const pricing = [
   {
     title: "Стандарт",
+    popular: false,
     price: "6 500",
     duration: "12 місяців",
     description: "Стандартний термін реєстрації",
